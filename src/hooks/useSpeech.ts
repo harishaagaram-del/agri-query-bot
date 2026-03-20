@@ -17,7 +17,7 @@ export function useSpeechRecognition() {
   const recRef = useRef<ISpeechRecognition | null>(null);
 
   const start = useCallback(() => {
-    const SR = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SR) { alert("Speech Recognition not supported in this browser."); return; }
     const rec = new SR();
     rec.lang = "en-US";
