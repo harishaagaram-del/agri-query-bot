@@ -1,9 +1,20 @@
 import { useState, useCallback, useRef } from "react";
 
+interface ISpeechRecognition extends EventTarget {
+  lang: string;
+  interimResults: boolean;
+  maxAlternatives: number;
+  onresult: ((e: any) => void) | null;
+  onend: (() => void) | null;
+  onerror: (() => void) | null;
+  start(): void;
+  stop(): void;
+}
+
 export function useSpeechRecognition() {
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
-  const recRef = useRef<SpeechRecognition | null>(null);
+  const recRef = useRef<ISpeechRecognition | null>(null);
 
   const start = useCallback(() => {
     const SR = window.SpeechRecognition || (window as any).webkitSpeechRecognition;
