@@ -1,0 +1,8 @@
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+sentence-transformers==2.6.1
+faiss-cpu==1.8.0
+pandas==2.2.1
+transformers==4.39.3
+torch==2.2.1
+huggingface-hub==0.22.2
